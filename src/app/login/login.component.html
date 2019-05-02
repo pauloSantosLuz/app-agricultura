@@ -1,0 +1,41 @@
+<mat-card class="my-card">
+      <mat-toolbar class="corVerde">
+   <span>LOGIN</span>
+</mat-toolbar>
+   <form class="my-form" [formGroup]="loginForm">
+      <mat-card-content>
+
+         <mat-form-field class="full-width">
+            <mat-label>Usuário</mat-label>
+            <input matInput type="text" placeholder="Informe o usuário" formControlName="username"
+               [(ngModel)]="excluiUsuario">
+            <!-- botão para limpar o campo de usuario -->
+            <button mat-button *ngIf="excluiUsuario" matSuffix mat-icon-button aria-label="Clear"
+               (click)="excluiUsuario=''">
+               <mat-icon svgIcon="iconClose"></mat-icon>
+            </button>
+            <mat-error *ngIf="hasError('username', 'required')">Informe o usuário</mat-error>
+         </mat-form-field>
+
+         <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Informe o senha" type="password" formControlName="password"
+               [(ngModel)]="excluiSenha">
+            <!-- botão para limpar o campo de senha -->
+            <button mat-button *ngIf="excluiSenha" matSuffix mat-icon-button aria-label="Clear"
+               (click)="excluiSenha=''">
+               <mat-icon svgIcon="iconClose"></mat-icon>
+            </button>
+            <mat-error *ngIf="hasError('password', 'required')">Informe o senha</mat-error>
+         </mat-form-field>
+      </mat-card-content>
+   </form>
+
+   <mat-card-actions class="botaoCSS">
+      <button mat-flat-button (click)="login()" class="corVerde" [disabled]="!loginForm.valid"  matTooltip="Clique para logar">
+         Acessar
+         <mat-icon svgIcon="iconInput"></mat-icon>
+      </button>
+
+   </mat-card-actions>
+</mat-card>
