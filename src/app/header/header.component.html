@@ -3,11 +3,7 @@ Agricultura
   <button mat-button *ngIf="!isLogged()" [routerLink]="[ '/login']">Login</button>
   <button mat-button *ngIf="isLogged()" (click)="logout()">Logout</button>
 
-  <button mat-button [matMenuTriggerFor]="belowMenu">Teste1</button>
-  <mat-menu #belowMenu="matMenu" yPosition="below">
-    <button mat-menu-item [routerLink]="[ '']">Item 1</button>
-    <button mat-menu-item [routerLink]="[ '']">Item 2</button>
-  </mat-menu>
+  <button mat-button [routerLink]="[ '/occurrencetype/list']">Tipos de Ocorrencia</button>
 
   <button mat-button [matMenuTriggerFor]="beforeMenu">Teste2</button>
   <mat-menu #beforeMenu="matMenu" xPosition="before">

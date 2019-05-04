@@ -18,11 +18,11 @@ export class LoginService {
   }
 
   public login = (login: string, password: string): Observable<string> => {
-    const body = JSON.stringify({ email: login, password: password });
+    const body = JSON.stringify({ login: login, password: password });
 
     return this.http
       .post<string>(
-        getDefaultURL('auth'),
+        getDefaultURL('auth/login'),
         body,
         { headers: this.getHeaders(), responseType: 'text' as 'json' }
       )
