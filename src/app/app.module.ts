@@ -7,7 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule, MatCardModule, MatInputModule, MatSpinner, MatProgressSpinnerModule, MatProgressBarModule, MatTooltipModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatIconModule, MatCardModule, MatInputModule, MatSpinner, MatProgressSpinnerModule, MatProgressBarModule, MatTooltipModule, MatDialogModule, MatNativeDateModule, MatOptionModule, MatSelect, MatSelectModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -15,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { DefaultComponent } from './default/default.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './login/login.service';
+import { CadastroComponent } from './cadastro/cadastro.component';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { LoginService } from './login/login.service';
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    DefaultComponent
+    DefaultComponent,
+    CadastroComponent
   ],
   imports: [
     FormsModule,
@@ -44,6 +47,13 @@ import { LoginService } from './login/login.service';
     ReactiveFormsModule,
     MatTooltipModule,
     MatDialogModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatSelectModule,
+
+    
 
   ],
   providers: [LoginService],
