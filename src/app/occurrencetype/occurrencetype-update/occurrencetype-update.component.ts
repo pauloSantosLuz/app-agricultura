@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -24,7 +24,7 @@ description;
     this.id =this.activateRoute.snapshot.params['id'];
     this.description=this.activateRoute.snapshot.params['description'];
     this.ownerForm =  this.formBuilder.group({
-      descricao: new FormControl('', [Validators.required, Validators.maxLength(60)]),
+      descricao: new FormControl('', [Validators.required, Validators.maxLength(60),descricaoDiferenteValidator(this.description)]),
      
     });
   }
@@ -43,4 +43,13 @@ description;
     });
   }
 
+}
+
+function descricaoDiferenteValidator(descricao:string):ValidatorFn{
+  return (control: AbstractControl): { [key: string]: boolean } | null => {
+    if (control.value == descricao) {
+        return { 'descricaoDif': true };
+    }
+    return null;
+};
 }

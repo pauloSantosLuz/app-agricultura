@@ -7,7 +7,8 @@ import { AuthGuard } from './login/auth.guard';
 const routes: Routes = [
   { path: '', component: DefaultComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'occurrencetype', loadChildren: './occurrencetype/occurrencetype.module#OccurrencetypeModule', canActivate:[AuthGuard] }
+  { path: 'occurrencetype', loadChildren: './occurrencetype/occurrencetype.module#OccurrencetypeModule', canActivate:[AuthGuard] },
+  {path: 'area', loadChildren: './area/area.module#AreaModule', canActivate:[AuthGuard] }
 ];
 
 @NgModule({
