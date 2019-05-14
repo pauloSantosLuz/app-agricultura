@@ -5,11 +5,10 @@
       <mat-form-field class="full-width">
         <mat-label>Descrição</mat-label>
 
-        <input matInput type="text" placeholder="Descrição" formControlName="descricao" value={{description}}>
+        <input matInput type="text" placeholder="Descrição" formControlName="descricao">
         <mat-hint align="end">Máximo 60 caracteres</mat-hint>
         <mat-error *ngIf="hasError('descricao', 'required')">Altere a descrição</mat-error>
         <mat-error *ngIf="hasError('descricao', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
-        <mat-error *ngIf="hasError('descricao', 'descricaoDif')">A nova descrição deve ser diferente da atual</mat-error>
       </mat-form-field>
 
     </form>

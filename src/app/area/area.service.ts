@@ -6,18 +6,20 @@ import { getDefaultURL } from '../app.const';
 import { AuthUtilService } from '../login/auth-util.service';
 import { Area } from './area.model';
 import { Solo } from './solo.model';
+import { MatDialog } from '@angular/material';
+import { AreaDeleteComponent } from './area-delete/area-delete.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AreaService {
 
-  constructor(private http: HttpClient, private authUtil: AuthUtilService) { }
+  constructor(private http: HttpClient, private authUtil: AuthUtilService,private dialog: MatDialog) { }
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Authorization': this.authUtil.currentTokenValue,
-      'Accept': 'application/json'
+      'Content-Type': 'application/json'
     });
   }
 
@@ -30,16 +32,22 @@ export class AreaService {
     .pipe(catchError(this.handleError));
       
   }
-  
 
-  public getSolo = (id:string): Observable<Solo> => {
+  public getSoloByID = (id:string): Observable<Solo> => {
     return this.http
     .get<Solo>(
       getDefaultURL('soil/'+id),
       { headers: this.getHeaders()}
     )
-    .pipe(catchError(this.handleError));
-      
+    .pipe(catchError(this.handleError)); 
+  }
+  public getSoloAll = (): Observable<Solo[]> => {
+    return this.http
+    .get<Solo[]>(
+      getDefaultURL('soil/all'),
+      { headers: this.getHeaders()}
+    )
+    .pipe(catchError(this.handleError)); 
   }
   public getAreas = (): Observable<Area[]> => {
     return this.http
@@ -49,6 +57,42 @@ export class AreaService {
     )
     .pipe(catchError(this.handleError));
       
+  }
+
+  public insertArea(descricao: string, coordenadas: string, soloID: number){
+   
+    const body = JSON.stringify({ description: descricao, geometry: coordenadas, soil: {id:soloID}
+    });
+    console.log(body);
+    return this.http
+      .post(
+        getDefaultURL('area'),
+        body,
+        { headers: this.getHeaders()}
+      )
+      .pipe(catchError(this.handleError));
+  }
+  public updateArea(id:string,descricao: string, coordenadas: string, soloID: number){
+   
+    const body = JSON.stringify({id: id, description: descricao, geometry: coordenadas, soil: {id:soloID}
+    });
+    console.log(body);
+    return this.http
+      .put(
+        getDefaultURL('area'),
+        body,
+        { headers: this.getHeaders()}
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  public deleteArea = (id: string): Observable<Area[]> => {
+    return this.http
+      .delete<Area[]>(
+        getDefaultURL('area/' + id),
+        { headers: this.getHeaders() }
+      )
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -64,4 +108,17 @@ export class AreaService {
     return throwError('Something bad happened; please try again later.');
   }
   
+
+  //abre o dialog para deletar uma ocorrencia
+  openConfimDialog(name: string) {
+    return this.dialog.open(AreaDeleteComponent, {
+      width: '390px',
+      panelClass: 'confim-dialog-container',
+      disableClose: true,
+      position: { top: "100px" },
+      data: {
+        message: name
+      }
+    });
+  }
 }

@@ -22,6 +22,7 @@ export class AreaListComponent implements OnInit {
   ) {
     iconRegistry.addSvgIcon('iconDel', sanitizer.bypassSecurityTrustResourceUrl('assets/rubbish-bin-delete-button.svg'));
     iconRegistry.addSvgIcon('iconUp', sanitizer.bypassSecurityTrustResourceUrl('assets/sharp-system_update-24px.svg'));
+    iconRegistry.addSvgIcon('iconDetails', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-view_list-24px.svg'));
   }
 
 
@@ -37,7 +38,21 @@ export class AreaListComponent implements OnInit {
     );
 
   }
-
+  onDelete(id:string,description:string){//deleta uma occorencia apos confirmação
+    this.areaService.openConfimDialog(description).afterClosed().subscribe(res =>{
+      if(res){
+        this.areaService.deleteArea(id).subscribe(
+          (data) => {
+            // recarega pagina
+            this.ngOnInit();
+          },
+          (error) => {
+            this.message = error;
+          }
+        );
+      }
+    });
+  }
   //ordenação
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;//cria paginas na tabela

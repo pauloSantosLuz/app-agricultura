@@ -1,10 +1,11 @@
 <mat-toolbar class="corVerde">
-Agricultura
+  Agricultura
+  <button mat-button *ngIf="!isLogged()" [routerLink]="[ '/cadastro']">Cadastro</button>
   <button mat-button *ngIf="!isLogged()" [routerLink]="[ '/login']">Login</button>
   <button mat-button *ngIf="isLogged()" (click)="logout()">Logout</button>
-
-  <button mat-button [routerLink]="[ '/occurrencetype/list']">Tipos de Ocorrencia</button>
   <button mat-button [routerLink]="[ '/area/list']">Areas</button>
+  <button mat-button [routerLink]="[ '/occurrencetype/list']">Tipos de Ocorrencia</button>
+
   <button mat-button [matMenuTriggerFor]="beforeMenu">Teste2</button>
   <mat-menu #beforeMenu="matMenu" xPosition="before">
     <button mat-menu-item [routerLink]="[ '']">Item 1</button>

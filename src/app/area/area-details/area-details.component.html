@@ -1,4 +1,10 @@
-<span class="content-span"> AREA: {{area.description}} </span>
-<span class="content-span"> Tipo do solo: {{solo.description}} </span>
-
-<div id="map" class="map my-form"></div>
+<mat-card class="my-card">
+    <mat-card-content>
+        <span class="span_font"> AREA: {{desc}} </span><br>
+        <span class="span_font"> Tipo do solo: {{solo.description}} </span>
+        <div id="map" class="map my-map"></div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button [routerLink]="[ '/area/list']" color="accent">Voltar</button>
+    </mat-card-actions>
+</mat-card>

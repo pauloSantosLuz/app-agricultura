@@ -1,0 +1,30 @@
+
+.content-span{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    
+    font-size: 20px;
+}
+.yes-button{
+    height: 50px;
+    width: 50%;
+    background-color: red;
+    color:white;
+    border-radius: 0px;
+}
+    
+.no-button{
+    height: 50px;
+    width: 50%;
+    background-color: #03b462;
+    color:white;
+    border-radius: 0px;
+
+}
+.content-container{
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    
+}

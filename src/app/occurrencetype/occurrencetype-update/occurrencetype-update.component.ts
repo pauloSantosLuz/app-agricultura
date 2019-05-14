@@ -24,9 +24,10 @@ description;
     this.id =this.activateRoute.snapshot.params['id'];
     this.description=this.activateRoute.snapshot.params['description'];
     this.ownerForm =  this.formBuilder.group({
-      descricao: new FormControl('', [Validators.required, Validators.maxLength(60),descricaoDiferenteValidator(this.description)]),
+      descricao: new FormControl('', [Validators.required, Validators.maxLength(60)/*,descricaoDiferenteValidator(this.description)*/]),
      
     });
+    this.f.descricao.setValue(this.description);
   }
   public hasError = (controlName: string, errorName: string) =>{
     return this.ownerForm.controls[controlName].hasError(errorName);
@@ -45,11 +46,11 @@ description;
 
 }
 
-function descricaoDiferenteValidator(descricao:string):ValidatorFn{
+/*function descricaoDiferenteValidator(descricao:string):ValidatorFn{
   return (control: AbstractControl): { [key: string]: boolean } | null => {
     if (control.value == descricao) {
         return { 'descricaoDif': true };
     }
     return null;
 };
-}
+}*/

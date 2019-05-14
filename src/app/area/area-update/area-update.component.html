@@ -1,0 +1,33 @@
+<mat-card>
+  <span>Atualizar Area</span>
+  <mat-card-content>
+    <form class="my-form" [formGroup]="ownerForm">
+      <mat-form-field class="full-width">
+        <mat-label>Descrição</mat-label>
+
+        <input matInput type="text" placeholder="Descrição" formControlName="descricao">
+        <mat-error *ngIf="hasError('descricao', 'required')">Descrição necessária</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Coordenadas</mat-label>
+        <input matInput type="text" placeholder="Coordenadas" formControlName="coordenadas">
+        <mat-error *ngIf="hasError('coordenadas', 'required')">Coordenadas necessária</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tipo do solo</mat-label>
+        <mat-select formControlName="solo" placeholder="Tipo do solo"> 
+          <mat-option  *ngFor="let solo of solo" [value]="solo.id">
+            {{solo.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button [routerLink]="[ '/area/list']" color="accent">Voltar</button>
+    <button mat-raised-button (click)="att()" color="primary" [disabled]="!ownerForm.valid">Atualizar</button>
+  </mat-card-actions>
+</mat-card>

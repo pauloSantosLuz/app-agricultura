@@ -40,7 +40,7 @@ export class OccurrencetypeListComponent implements OnInit {
   }
 
 
-  onDelete(id:string,description:string){
+  onDelete(id:string,description:string){//deleta uma occorencia apos confirmação
     this.occurrencetypeService.openConfimDialog(description).afterClosed().subscribe(res =>{
       if(res){
         this.occurrencetypeService.deleteOccurrencetype(id).subscribe(
@@ -56,17 +56,7 @@ export class OccurrencetypeListComponent implements OnInit {
     });
   }
 
-  public redirectToDelete = (id: string) => {//deleta um tipo de ocorencia
-    this.occurrencetypeService.deleteOccurrencetype(id).subscribe(
-      (data) => {
-        // recarega pagina
-        this.ngOnInit();
-      },
-      (error) => {
-        this.message = error;
-      }
-    );
-  }
+  
 
   //ordenação
   @ViewChild(MatSort) sort: MatSort;

@@ -9,6 +9,7 @@ import {OSM, Vector as VectorSource} from 'ol/source.js';
 import { AreaService } from '../area.service';
 import { Area } from '../area.model';
 import { Solo } from '../solo.model';
+import { makeParamDecorator } from '@angular/core/src/util/decorators';
 
 
 @Component({
@@ -20,17 +21,26 @@ export class AreaDetailsComponent implements OnInit {
 
   constructor(private areaService: AreaService,private activateRoute:ActivatedRoute) { }
 id;
+desc;
+geometria;
+solos;
+coordenadas;
   ngOnInit() {
     this.id =this.activateRoute.snapshot.params['id'];
-    this.getAREA();
+    this.desc=this.activateRoute.snapshot.params['description'];
+    this.geometria=this.activateRoute.snapshot.params['geometria'];
+    this.solos=this.activateRoute.snapshot.params['soloID'];
+    console.log(this.solos);
+    this.getSolo(this.solos);
+    this.coordenadas = this.geometria.substr(10);
     
-    
+    this.mapa(this.coordenadas);
   }
 
 solo: Solo;
-  area: Area;
+
   getSolo(id: string){
-    this.areaService.getSolo(id).subscribe(
+    this.areaService.getSoloByID(id).subscribe(
       (data: Solo) =>{
         this.solo=data;
       },
@@ -39,19 +49,7 @@ solo: Solo;
       }
     );
   }
-  getAREA(){
-    this.areaService.getArea(this.id).subscribe(
-      (data: Area) =>{
-        this.area=data;
-        this.mapa(this.area.geometry.substr(10));
-        console.log(this.area.soil.id);
-        this.getSolo(this.area.soil.id);
-      },
-      (error) =>{
-        console.log(error);
-      }
-    );
-  }
+  
 
   mapa(wkt){
     var raster = new TileLayer({
@@ -77,7 +75,7 @@ solo: Solo;
       zoom: 1
     });
 
-    view.fit(feature.getGeometry(), {padding: [170, 50, 30, 150], minResolution: 50});
+    view.fit(feature.getGeometry(), {padding: [170, 50, 30, 150], minResolution: 20});
     var map = new Map({
       layers: [raster, vector],
       target: 'map',
