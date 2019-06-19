@@ -5,11 +5,13 @@ import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import WKT from 'ol/format/WKT.js';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
+import {Circle as CircleStyle, Fill, Stroke, Style} from 'ol/style.js';
 import {OSM, Vector as VectorSource} from 'ol/source.js';
 import { AreaService } from '../area.service';
-import { Area } from '../area.model';
 import { Solo } from '../solo.model';
-import { makeParamDecorator } from '@angular/core/src/util/decorators';
+import BingMaps from 'ol/source/BingMaps.js';
+import {ZoomSlider} from 'ol/control.js';
+
 
 
 @Component({
@@ -25,15 +27,15 @@ desc;
 geometria;
 solos;
 coordenadas;
+
   ngOnInit() {
-    this.id =this.activateRoute.snapshot.params['id'];
+    
     this.desc=this.activateRoute.snapshot.params['description'];
     this.geometria=this.activateRoute.snapshot.params['geometria'];
     this.solos=this.activateRoute.snapshot.params['soloID'];
-    console.log(this.solos);
+    
     this.getSolo(this.solos);
     this.coordenadas = this.geometria.substr(10);
-    
     this.mapa(this.coordenadas);
   }
 
@@ -52,10 +54,27 @@ solo: Solo;
   
 
   mapa(wkt){
+    
     var raster = new TileLayer({
-      source: new OSM()
+      source: new BingMaps({
+        imagerySet: 'AerialWithLabels',
+        key: 'AiFl58LN-AEl9p55F1fEXD3nZx8EydZjJUqWL9-eeq4aLxgIdIF13rjAxD9ARpZE'
+      })
+
     });
-   
+
+    var styles = {
+      'MultiPolygon': new Style({
+        stroke: new Stroke({
+          color: 'orange',
+          lineDash: [4],
+          width: 3
+        }),
+        fill: new Fill({
+          color: 'rgba(255,165,0, 0.1)'
+        })
+      }),
+    }
 
     var format = new WKT();
 
@@ -63,11 +82,14 @@ solo: Solo;
       dataProjection: 'EPSG:4326',
       featureProjection: 'EPSG:3857'
     });
-
+    var styleFunction = function(feature) {
+        return styles[feature.getGeometry().getType()];
+      };
     var vector = new VectorLayer({
       source: new VectorSource({
         features: [feature]
-      })
+      }),
+      style: styleFunction
      
     });
     var view = new View({
@@ -75,13 +97,15 @@ solo: Solo;
       zoom: 1
     });
 
-    view.fit(feature.getGeometry(), {padding: [170, 50, 30, 150], minResolution: 20});
+    view.fit(feature.getGeometry(), {padding: [170, 50, 30, 150], minResolution:10});
     var map = new Map({
       layers: [raster, vector],
       target: 'map',
       view: view
       
     });
+    var zoomslider = new ZoomSlider();
+        map.addControl(zoomslider);
   }
 
 }

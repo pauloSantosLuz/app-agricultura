@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Solo } from '../solo.model';
 import { AreaService } from '../area.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class AreaInsertComponent implements OnInit {
     this.getSolo();
     this.ownerForm = this.formBuilder.group({
       descricao: new FormControl('', [Validators.required]),
-      coordenadas: new FormControl('', [Validators.required]),
+      coordenadas: new FormControl('', [Validators.required,pontoDiferenteValidator()]),
       solo: new FormControl('', [Validators.required])
     });
   }
@@ -48,7 +48,7 @@ export class AreaInsertComponent implements OnInit {
     ,this.f.solo.value).subscribe(() => {
 
       // redireciona a view
-      this.router.navigate(['/occurrencetype/list']);
+      this.router.navigate(['/area/list']);
     },
       (error) => {
         this.message = error;
@@ -56,4 +56,13 @@ export class AreaInsertComponent implements OnInit {
 
     );
   }
+}
+function pontoDiferenteValidator():ValidatorFn{
+  return (control: AbstractControl): { [key: string]: boolean } | null => {
+    var arrey = control.value.split(",");
+    if (arrey[0] != arrey[arrey.length-1]) {
+        return { 'pontoDif': true };
+    }
+    return null;
+};
 }

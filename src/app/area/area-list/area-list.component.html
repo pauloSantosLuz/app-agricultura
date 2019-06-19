@@ -23,7 +23,7 @@
     <th mat-header-cell *matHeaderCellDef> Detalhes </th>
     <td mat-cell *matCellDef="let element">
       <button mat-icon-button color="primary"
-        [routerLink]="[ '/area/details',{id:element.id,description:element.description,geometria:element.geometry,soloID:element.soil.id}]">
+        [routerLink]="[ '/area/details',{description:element.description,geometria:element.geometry,soloID:element.soil.id}]">
         <mat-icon class="mat-18" svgIcon="iconDetails"></mat-icon>
       </button>
     </td>

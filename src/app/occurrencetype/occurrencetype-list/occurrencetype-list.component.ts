@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class OccurrencetypeListComponent implements OnInit {
 
   message;
-  displayedColumns: string[] = ['id', 'description', 'update', 'delete'];
+  displayedColumns: string[] = ['id', 'descricao', 'update', 'delete'];
   public occurrencestype: Occurrencetype[];
   public dataSource = new MatTableDataSource<Occurrencetype>();
 

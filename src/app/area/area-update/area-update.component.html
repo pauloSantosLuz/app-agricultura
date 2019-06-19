@@ -13,12 +13,13 @@
         <mat-label>Coordenadas</mat-label>
         <input matInput type="text" placeholder="Coordenadas" formControlName="coordenadas">
         <mat-error *ngIf="hasError('coordenadas', 'required')">Coordenadas necessária</mat-error>
+        <mat-error *ngIf="hasError('coordenadas', 'pontoDif')">Ponto inicial deve ser igual ao ponto final</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Tipo do solo</mat-label>
-        <mat-select formControlName="solo" placeholder="Tipo do solo"> 
-          <mat-option  *ngFor="let solo of solo" [value]="solo.id">
+        <mat-select formControlName="solo" placeholder="Tipo do solo" [(ngModel)]="selectedOption"> 
+          <mat-option  *ngFor="let solo of solos" [value]="solo.id">
             {{solo.description}}
           </mat-option>
         </mat-select>

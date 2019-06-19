@@ -63,7 +63,7 @@ export class AreaService {
    
     const body = JSON.stringify({ description: descricao, geometry: coordenadas, soil: {id:soloID}
     });
-    console.log(body);
+
     return this.http
       .post(
         getDefaultURL('area'),
@@ -72,11 +72,12 @@ export class AreaService {
       )
       .pipe(catchError(this.handleError));
   }
+  
   public updateArea(id:string,descricao: string, coordenadas: string, soloID: number){
    
     const body = JSON.stringify({id: id, description: descricao, geometry: coordenadas, soil: {id:soloID}
     });
-    console.log(body);
+
     return this.http
       .put(
         getDefaultURL('area'),
