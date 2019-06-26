@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AreaListComponent } from './area-list/area-list.component';
-import { MatTableModule, MatIconModule, MatButtonModule, MatSortModule, MatFormFieldModule, MatInputModule, MatPaginatorModule, MatDialogModule, MatCardModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { MatTableModule, MatIconModule, MatButtonModule, MatSortModule, MatFormFieldModule, MatInputModule, MatPaginatorModule, MatDialogModule, MatCardModule, MatOptionModule, MatSelectModule, MatGridListModule, MatToolbarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -39,6 +39,8 @@ const routes: Routes =[
     HttpClientModule,
     MatOptionModule,
     MatSelectModule,
+    MatGridListModule,
+    MatToolbarModule,
     RouterModule.forChild(routes)
   ], 
   entryComponents:[AreaDeleteComponent],

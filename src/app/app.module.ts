@@ -7,7 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule, MatCardModule, MatInputModule, MatSpinner, MatProgressSpinnerModule, MatProgressBarModule, MatTooltipModule, MatDialogModule, MatNativeDateModule, MatOptionModule, MatSelect, MatSelectModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatIconModule, MatCardModule, MatInputModule, MatSpinner, MatProgressSpinnerModule, MatProgressBarModule, MatTooltipModule, MatDialogModule, MatNativeDateModule, MatOptionModule, MatSelect, MatSelectModule, MatGridListModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -52,7 +52,9 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MatOptionModule,
     MatFormFieldModule,
     MatSelectModule,
-
+    MatIconModule,
+    MatGridListModule,
+    MatProgressSpinnerModule
     
 
   ],

@@ -1,5 +1,6 @@
 <mat-card>
-  <span>Cadastrar Area</span>
+  <span>Cadastro de Area</span>
+
   <mat-card-content>
     <form class="my-form" [formGroup]="ownerForm">
       <mat-form-field class="full-width">
@@ -9,26 +10,32 @@
         <mat-error *ngIf="hasError('descricao', 'required')">Descrição necessária</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="full-width">
+      <!--<mat-form-field class="full-width">
         <mat-label>Coordenadas</mat-label>
-        <input matInput type="text" placeholder="Coordenadas" formControlName="coordenadas">
-        <mat-error *ngIf="hasError('coordenadas', 'required')">Coordenadas necessária</mat-error>
+        <input matInput type="text" id="coordenada" placeholder="Coordenadas" disabled  > (input)="mapa($event.target.value)"-->
+      <!-- <mat-error *ngIf="hasError('coordenadas', 'required')">Coordenadas necessária</mat-error>
         <mat-error *ngIf="hasError('coordenadas', 'pontoDif')">Ponto inicial deve ser igual ao ponto final</mat-error>
-      </mat-form-field>
+      </mat-form-field>-->
 
       <mat-form-field>
         <mat-label>Tipo do solo</mat-label>
-        <mat-select formControlName="solo" placeholder="Tipo do solo"> 
-          <mat-option  *ngFor="let solo of solo" [value]="solo.id">
+        <mat-select formControlName="solo" placeholder="Tipo do solo">
+          <mat-option *ngFor="let solo of solo" [value]="solo.id">
             {{solo.description}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
 
+      </mat-form-field>
     </form>
+    <mat-form-field class="full-width">
+      <mat-label>Coordenadas</mat-label>
+      <input matInput type="text" id="coordenada" disabled>
+    </mat-form-field>
+    <div id="map" class="map my-map"></div>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button [routerLink]="[ '/area/list']" color="accent">Voltar</button>
-    <button mat-raised-button (click)="add()" color="primary" [disabled]="!ownerForm.valid">Adicionar</button>
+    <button mat-raised-button (click)="add()" color="primary" [disabled]="!ownerForm.valid">Cadastrar</button>
+    <button mat-raised-button (click)="limpaMapa()" color="primary" style="float: right;">Limpa mapa</button>
   </mat-card-actions>
 </mat-card>

@@ -1,5 +1,21 @@
-
-<div>
-  <br>
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</div>
+<mat-card class="my-card">
+  <div>
+    <br>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+      <img mat-card-image src="https://tnsolution.com.br/wp-content/uploads/2018/02/Campo.png" alt="Photo of a Shiba Inu">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <img mat-card-image src="https://www.viavini.com.br/media/wysiwyg/blog/tipos-de-solos-e-as-vinhas.jpg" alt="Photo of solos">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <img class="tile-image" src="http://nordesterural.com.br/wp-content/uploads/2015/01/Zoneamento-Agr%C3%ADcola-Arquivo-Embrapa.jpg" alt="Photo of solos">
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

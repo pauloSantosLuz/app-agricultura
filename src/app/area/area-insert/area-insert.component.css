@@ -17,3 +17,15 @@
     background-color: #03b462;
     color: white;
   }
+
+.my-map{
+  align-content: center;
+  margin: 10px auto;
+  min-width: 100px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.span_font{
+  font-size: 20px;
+}
