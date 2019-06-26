@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 const routes: Routes =[
+  {path:'insert',component: PrecipitationInsertComponent}
 ]
 @NgModule({
   declarations: [PrecipitationInsertComponent],

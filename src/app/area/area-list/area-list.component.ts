@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AreaListComponent implements OnInit {
   message;
-  displayedColumns: string[] = ['id', 'descrição','view', 'update', 'delete'];
+  displayedColumns: string[] = ['id', 'descrição','view', 'update', 'delete','precipitation'];
   public area: Area;
   public dataSource = new MatTableDataSource<Area>();
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
@@ -23,6 +23,7 @@ export class AreaListComponent implements OnInit {
     iconRegistry.addSvgIcon('iconDel', sanitizer.bypassSecurityTrustResourceUrl('assets/rubbish-bin-delete-button.svg'));
     iconRegistry.addSvgIcon('iconUp', sanitizer.bypassSecurityTrustResourceUrl('assets/sharp-system_update-24px.svg'));
     iconRegistry.addSvgIcon('iconDetails', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-view_list-24px.svg'));
+    iconRegistry.addSvgIcon('iconPrecipitation', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-local_drink-24px.svg'));
   }
 
 
