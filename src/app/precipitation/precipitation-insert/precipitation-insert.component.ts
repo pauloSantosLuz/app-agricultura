@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PrecipitationService } from '../precipitation.service';
 
 @Component({
@@ -14,12 +14,13 @@ export class PrecipitationInsertComponent implements OnInit {
   ownerForm: FormGroup;
   id;
   message;
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private formBuilder: FormBuilder, private router: Router,
+  constructor(private activateRoute:ActivatedRoute,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private formBuilder: FormBuilder, private router: Router,
     private occurrencetypeService: PrecipitationService) {
     iconRegistry.addSvgIcon('iconClose', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-close-24px.svg'));
   }
 
   ngOnInit() {
+    this.id =this.activateRoute.snapshot.params['id'];
     this.ownerForm = this.formBuilder.group({
       observation: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       collectionType: new FormControl('', [Validators.required, Validators.maxLength(60)]),

@@ -71,6 +71,7 @@ export class PrecipitationService {
       endDate: endDate,
       area: {id:id}
       });
+      console.log(body);
     return this.http
       .post(
         getDefaultURL('precipitation'),
