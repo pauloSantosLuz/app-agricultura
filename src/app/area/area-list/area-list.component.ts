@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AreaListComponent implements OnInit {
   message;
-  displayedColumns: string[] = ['id', 'descrição','view', 'update', 'delete','precipitation'];
+  displayedColumns: string[] = ['id', 'description','view', 'update', 'delete','precipitation'];
   public area: Area;
   public dataSource = new MatTableDataSource<Area>();
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,

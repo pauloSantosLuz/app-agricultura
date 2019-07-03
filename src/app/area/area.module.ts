@@ -44,6 +44,7 @@ const routes: Routes =[
     RouterModule.forChild(routes)
   ], 
   entryComponents:[AreaDeleteComponent],
-  providers:[AreaService]
+  providers:[AreaService],
+  exports:[MatSortModule]
 })
 export class AreaModule { }

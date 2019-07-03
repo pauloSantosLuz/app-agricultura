@@ -18,7 +18,7 @@ import { createStringXY } from 'ol/coordinate.js';
 import { defaults as defaultControls } from 'ol/control.js';
 import { transform } from 'ol/proj';
 import Draw from 'ol/interaction/Draw.js';
-import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-area-update',
@@ -142,7 +142,7 @@ export class AreaUpdateComponent implements OnInit {
       // comment the following two lines to have the mouse position
       // be placed within the map.
       className: 'custom-mouse-position',
-      target: document.getElementById('map'),
+      target: document.getElementById('mousePos'),
       undefinedHTML: '&nbsp;'
     });
     //Chama mapa Bing

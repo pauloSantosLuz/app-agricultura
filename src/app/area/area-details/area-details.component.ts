@@ -63,7 +63,7 @@ export class AreaDetailsComponent implements OnInit {
       // comment the following two lines to have the mouse position
       // be placed within the map.
       className: 'custom-mouse-position',
-      target: document.getElementById('map'),
+      target: document.getElementById('mousePos'),
       undefinedHTML: '&nbsp;'
     });
     //Chama mapa Bing
@@ -107,7 +107,7 @@ export class AreaDetailsComponent implements OnInit {
       zoom: 1
     });
 
-    view.fit(feature.getGeometry(), { padding: [170, 50, 30, 150], minResolution: 5 });
+    view.fit(feature.getGeometry(), { padding: [170, 50, 30, 150], minResolution: 2 });
     var map = new Map({
       controls: defaultControls().extend([mousePositionControl]),
       layers: [raster, vector],
@@ -119,7 +119,7 @@ export class AreaDetailsComponent implements OnInit {
     var zoomslider = new ZoomSlider();
     map.addControl(zoomslider);
 
-    
+
   }
 
 }

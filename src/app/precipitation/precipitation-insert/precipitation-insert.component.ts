@@ -4,7 +4,7 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PrecipitationService } from '../precipitation.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-precipitation-insert',
   templateUrl: './precipitation-insert.component.html',
@@ -37,12 +37,13 @@ export class PrecipitationInsertComponent implements OnInit {
     return this.ownerForm.controls;
   }
   add() {
+    
     this.occurrencetypeService.postPrecipitation(this.f.observation.value,
-      this.f.collectionType.value,this.f.volume.value,this.f.startDate.value,
-      this.f.endDate.value,this.id).subscribe(() => {
-
+      this.f.collectionType.value,this.f.volume.value,moment(this.f.startDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),
+      moment(this.f.endDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),this.id).subscribe(() => {
+        console.log("a");
       // redireciona a view
-     // this.router.navigate(['/occurrencetype/list']);
+      this.router.navigate(['/area/list']);
     },
       (error) => {
         this.message = error;

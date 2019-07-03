@@ -104,7 +104,7 @@ export class AreaInsertComponent implements OnInit {
       // comment the following two lines to have the mouse position
       // be placed within the map.
       className: 'custom-mouse-position',
-      target: document.getElementById('map'),
+      target: document.getElementById('mousePos'),
       undefinedHTML: '&nbsp;'
     });
     //Chama mapa Bing

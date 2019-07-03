@@ -66,11 +66,23 @@ export class OccurrencetypeService {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
+      alert("Occoreu um erro: "+ error.error.message);
       // return an observable with a user-facing error message
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.log(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
+      switch(error.status){
+        case 0:
+            alert("Ocorrência já cadastrada");
+            break;
+        case 400:
+            alert("Ocorrência já cadastrada");
+            break;
+        default:
+            alert(`Backend returned code ${error.status}, ` + `body was: ${error.error}` + '\n Contate o administrador');
+      }
+
     }
     return throwError('Something bad happened; please try again later.');
   }
