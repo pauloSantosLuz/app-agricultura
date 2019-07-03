@@ -20,41 +20,70 @@ export class PrecipitationService {
     });
   }
 
-  public getOccurrencetype = (): Observable<Precipitation[]> => {
+  public getPrecipitation = (): Observable<Precipitation[]> => {
     return this.http
       .get<Precipitation[]>(
-        getDefaultURL('occurrencetype'),
+        getDefaultURL('precipitation'),
         { headers: this.getHeaders() }
       )
       .pipe(catchError(this.handleError));
   }
 
-  public putOccurrencetype(id: string, descricao: string) {
-    const body = JSON.stringify({ id: id, description: descricao });
+  public putPrecipitation(
+    observation: string,
+    collectionType: string,
+    volume: string,
+    startDate: string,
+    endDate: string,
+    id: string
+    ) {
+    const body = JSON.stringify({
+       observation: observation,
+       collectionType: collectionType,
+       volume: volume,
+       startDate: startDate,
+       endDate: endDate,
+       area: {id:id}
+   });
     return this.http
       .put(
-        getDefaultURL('occurrencetype'),
+        getDefaultURL('precipitation'),
         body,
         { headers: this.getHeaders() }
       )
       .pipe(catchError(this.handleError));
   }
 
-  public postOccurrencetype(descricao: string) {
-    const body = JSON.stringify({ description: descricao });
+  public postPrecipitation(
+    observation: string,
+    collectionType: string,
+    volume: string,
+    startDate: string,
+    endDate: string,
+    id: string
+
+  ) {
+    const body = JSON.stringify({
+      observation: observation,
+      collectionType: collectionType,
+      volume: volume,
+      startDate: startDate,
+      endDate: endDate,
+      area: {id:id}
+      });
     return this.http
       .post(
-        getDefaultURL('occurrencetype'),
+        getDefaultURL('precipitation'),
         body,
         { headers: this.getHeaders() }
       )
       .pipe(catchError(this.handleError));
   }
 
-  public deleteOccurrencetype = (id: string): Observable<Precipitation[]> => {
+  public deletePrecipitation = (id: string): Observable<Precipitation[]> => {
     return this.http
       .delete<Precipitation[]>(
-        getDefaultURL('occurrencetype/' + id),
+        getDefaultURL('precipitation/' + id),
         { headers: this.getHeaders() }
       )
       .pipe(catchError(this.handleError));
