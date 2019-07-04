@@ -23,7 +23,7 @@ export class PrecipitationInsertComponent implements OnInit {
     this.id =this.activateRoute.snapshot.params['id'];
     this.ownerForm = this.formBuilder.group({
       observation: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      collectionType: new FormControl('', [Validators.required, Validators.maxLength(60)]),
+      collectionType: new FormControl('', [Validators.required]),
       volume: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       startDate: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       endDate: new FormControl('', [Validators.required, Validators.maxLength(60)]),

@@ -1,5 +1,5 @@
 <mat-toolbar class="corVerde">
-  Agricultura
+  <img width="40" alt="Angular Logo" src="assets/android-icon-72x72.png">    Agricultura
   <button mat-button *ngIf="!isLogged()" [routerLink]="[ '/cadastro']">Cadastro</button>
   <button mat-button *ngIf="!isLogged()" [routerLink]="[ '/login']">Login</button>
   <button mat-button *ngIf="isLogged()" (click)="logout()">Logout</button>

@@ -11,13 +11,18 @@
         <mat-error *ngIf="hasError('observation', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="full-width">
-        <mat-label>Estação:</mat-label>
+      
 
-        <input matInput type="text" placeholder="Descrição" formControlName="collectionType">
-        <mat-hint align="end">Insira a estação do ano</mat-hint>
-        <mat-error *ngIf="hasError('collectionType', 'required')">Preenchimento necessário</mat-error>
-        <mat-error *ngIf="hasError('collectionType', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
+      <mat-form-field>
+        <mat-label>Estação:</mat-label>
+        <mat-select formControlName="collectionType" placeholder="collectionType">
+          <mat-option value="verao">Verão</mat-option>
+          <mat-option value="inverno">Inverno</mat-option>
+          <mat-option value="outono">Outono</mat-option>
+          <mat-option value="primavera">Primavera</mat-option>
+        </mat-select>
+        <mat-hint align="end">Selecione uma estação</mat-hint>
+        <mat-error *ngIf="hasError('observation', 'required')">Preenchimento necessário</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
