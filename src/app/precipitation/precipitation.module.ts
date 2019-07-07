@@ -5,11 +5,13 @@ import { MatTableModule, MatIconModule, MatButtonModule, MatSortModule, MatFormF
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { PrecipitationListComponent } from './precipitation-list/precipitation-list.component';
 const routes: Routes =[
+  {path:'list',component: PrecipitationListComponent},
   {path:'insert',component: PrecipitationInsertComponent}
 ]
 @NgModule({
-  declarations: [PrecipitationInsertComponent],
+  declarations: [PrecipitationInsertComponent, PrecipitationListComponent],
   imports: [
     MatDatepickerModule,
     CommonModule,
