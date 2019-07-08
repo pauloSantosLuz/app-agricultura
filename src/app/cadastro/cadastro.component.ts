@@ -39,7 +39,7 @@ export class CadastroComponent implements OnInit {
   add() {
     this.cadastroService.cadastro(this.f.nome.value, this.f.email.value, this.f.telefone.value, this.f.senha.value, 1, 1).subscribe(() => {
       // redireciona a view
-     // this.router.navigate(['/occurrencetype/list']);
+      this.router.navigate(['/login']);
     },
       (error) => {
         this.message = error;

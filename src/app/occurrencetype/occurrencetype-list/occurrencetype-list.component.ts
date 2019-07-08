@@ -24,6 +24,7 @@ export class OccurrencetypeListComponent implements OnInit {
     public dialog: MatDialog
   ) {
     iconRegistry.addSvgIcon('iconDel', sanitizer.bypassSecurityTrustResourceUrl('assets/rubbish-bin-delete-button.svg'));
+    iconRegistry.addSvgIcon('iconADD', sanitizer.bypassSecurityTrustResourceUrl('assets/add.svg'));
     iconRegistry.addSvgIcon('iconUp', sanitizer.bypassSecurityTrustResourceUrl('assets/sharp-system_update-24px.svg'));
   }
 

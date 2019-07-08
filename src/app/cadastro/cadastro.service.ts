@@ -20,7 +20,7 @@ export class CadastroService {
   }
 
   public cadastro = (name: string, mail: string, phone: string, senha: string, country: number, phoneCode: number): Observable<string> => {
-    const body = JSON.stringify({name: name, mail: mail, phone: phone, senha: senha, country: "{id:1},", phoneCode: "{id:1},"});
+    const body = JSON.stringify({name: name, mail: mail, phone: phone, password: senha, country: {id:1}, phoneCode: {id:1}});
 
     return this.http
       .post<string>(

@@ -23,6 +23,7 @@ export class AreaListComponent implements OnInit {
     iconRegistry.addSvgIcon('iconDel', sanitizer.bypassSecurityTrustResourceUrl('assets/rubbish-bin-delete-button.svg'));
     iconRegistry.addSvgIcon('iconUp', sanitizer.bypassSecurityTrustResourceUrl('assets/sharp-system_update-24px.svg'));
     iconRegistry.addSvgIcon('iconDetails', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-view_list-24px.svg'));
+    iconRegistry.addSvgIcon('iconADD', sanitizer.bypassSecurityTrustResourceUrl('assets/add.svg'));
     iconRegistry.addSvgIcon('iconPrecipitation', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-local_drink-24px.svg'));
   }
 

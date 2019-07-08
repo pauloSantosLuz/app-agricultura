@@ -1,6 +1,7 @@
 <div>
-  <button mat-flat-button class="margem" color="primary" [routerLink]="[ '/occurrencetype/insert']">
-    Adicionar
+  
+  <button mat-mini-fab class="margem" color="primary" [routerLink]="[ '/occurrencetype/insert']">
+    <mat-icon svgIcon="iconADD"></mat-icon>
   </button>
   <mat-form-field style="float: right;">
     <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtro">
