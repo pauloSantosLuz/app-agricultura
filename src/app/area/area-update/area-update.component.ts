@@ -164,7 +164,7 @@ export class AreaUpdateComponent implements OnInit {
       zoom: 1
     });
 
-    view.fit(feature.getGeometry(), { padding: [170, 50, 30, 150], minResolution: 5 });
+    view.fit(feature.getGeometry(), { padding: [170, 50, 30, 150], minResolution: 3 });
     var map = new Map({
       controls: defaultControls().extend([mousePositionControl]),
       layers: [raster, vector],

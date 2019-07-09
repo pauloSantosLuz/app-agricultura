@@ -74,10 +74,10 @@ export class OccurrencetypeService {
       console.log(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
       switch(error.status){
         case 0:
-            alert("Ocorrência já cadastrada");
+            alert("Norma não respeitada");
             break;
         case 400:
-            alert("Ocorrência já cadastrada");
+            alert("Norma não respeitada");
             break;
         default:
             alert(`Backend returned code ${error.status}, ` + `body was: ${error.error}` + '\n Contate o administrador');

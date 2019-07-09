@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AreaListComponent implements OnInit {
   message;
-  displayedColumns: string[] = ['id', 'description','view', 'update', 'delete','precipitation'];
+  displayedColumns: string[] = ['id', 'description','view', 'update', 'delete','precipitation','occorencia'];
   public area: Area;
   public dataSource = new MatTableDataSource<Area>();
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
@@ -24,6 +24,7 @@ export class AreaListComponent implements OnInit {
     iconRegistry.addSvgIcon('iconUp', sanitizer.bypassSecurityTrustResourceUrl('assets/sharp-system_update-24px.svg'));
     iconRegistry.addSvgIcon('iconDetails', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-view_list-24px.svg'));
     iconRegistry.addSvgIcon('iconADD', sanitizer.bypassSecurityTrustResourceUrl('assets/add.svg'));
+    iconRegistry.addSvgIcon('iconOccurrence', sanitizer.bypassSecurityTrustResourceUrl('assets/icon.svg'));
     iconRegistry.addSvgIcon('iconPrecipitation', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-local_drink-24px.svg'));
   }
 
@@ -43,6 +44,8 @@ export class AreaListComponent implements OnInit {
   onDelete(id:string,description:string){//deleta uma occorencia apos confirmação
     this.areaService.openConfimDialog(description).afterClosed().subscribe(res =>{
       if(res){
+
+
         this.areaService.deleteArea(id).subscribe(
           (data) => {
             // recarega pagina

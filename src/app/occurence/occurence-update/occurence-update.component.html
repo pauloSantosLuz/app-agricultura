@@ -1,0 +1,32 @@
+<mat-card>
+    <span>Atualizar Ocorrência: {{descricao}}</span>
+  
+    <mat-card-content>
+      <form class="my-form" [formGroup]="ownerForm">
+        <mat-form-field class="full-width">
+          <mat-label>Descrição</mat-label>
+  
+          <input matInput type="text" placeholder="Descrição" formControlName="descricao">
+          <mat-error *ngIf="hasError('descricao', 'required')">Descrição necessária</mat-error>
+        </mat-form-field>
+  
+  
+        <mat-form-field>
+          <mat-label>Tipo de Ocorrencia</mat-label>
+          <mat-select formControlName="ocorrencia" placeholder="Tipo de Ocorrencia" [(ngModel)]="selectedOption">
+            <mat-option *ngFor="let ocorrencia of occurenceTipe" [value]="ocorrencia.id">
+              {{ocorrencia.description}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+       
+      </form>
+ 
+    </mat-card-content>
+  
+  
+    <mat-card-actions>
+      <button mat-raised-button (click)="volta()" color="accent">Voltar</button>
+      <button mat-raised-button (click)="att()" color="primary" [disabled]="!ownerForm.valid">Atualizar</button>
+    </mat-card-actions>
+  </mat-card>

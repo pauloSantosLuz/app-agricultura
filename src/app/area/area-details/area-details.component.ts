@@ -6,7 +6,7 @@ import View from 'ol/View.js';
 import WKT from 'ol/format/WKT.js';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer.js';
 import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style.js';
-import { OSM, Vector as VectorSource } from 'ol/source.js';
+import { Vector as VectorSource } from 'ol/source.js';
 import { AreaService } from '../area.service';
 import { Solo } from '../solo.model';
 import BingMaps from 'ol/source/BingMaps.js';
@@ -34,7 +34,7 @@ export class AreaDetailsComponent implements OnInit {
     this.desc = this.activateRoute.snapshot.params['description'];
     this.geometria = this.activateRoute.snapshot.params['geometria'];
     this.solos = this.activateRoute.snapshot.params['soloID'];
-
+    (<HTMLInputElement>document.getElementById("area")).value = this.desc;
     this.getSolo(this.solos);
     this.coordenadas = this.geometria.substr(10);
     this.mapa(this.coordenadas);
@@ -46,6 +46,7 @@ export class AreaDetailsComponent implements OnInit {
     this.areaService.getSoloByID(id).subscribe(
       (data: Solo) => {
         this.solo = data;
+        (<HTMLInputElement>document.getElementById("solo")).value = this.solo.description;
       },
       (error) => {
         console.log(error);
@@ -107,7 +108,7 @@ export class AreaDetailsComponent implements OnInit {
       zoom: 1
     });
 
-    view.fit(feature.getGeometry(), { padding: [170, 50, 30, 150], minResolution: 2 });
+    view.fit(feature.getGeometry(), { padding: [170, 50, 30, 150], minResolution: 3 });
     var map = new Map({
       controls: defaultControls().extend([mousePositionControl]),
       layers: [raster, vector],

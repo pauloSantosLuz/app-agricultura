@@ -108,7 +108,7 @@ export class AreaService {
       console.log(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
       
       if(error.status==400||error.status==0){
-        alert("Descrição da área já cadastrada");
+        alert("Norma não respeitada");
       }else{
         alert(`Backend returned code ${error.status}, ` + `body was: ${error.error}` + '\n Contate o administrador');
       }

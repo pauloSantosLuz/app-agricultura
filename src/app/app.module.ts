@@ -19,13 +19,16 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
     DefaultComponent,
-    CadastroComponent
+    CadastroComponent,
+  
   ],
   imports: [
     FormsModule,

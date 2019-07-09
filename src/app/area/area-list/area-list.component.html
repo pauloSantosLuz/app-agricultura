@@ -1,4 +1,8 @@
 <div>
+    <br>
+    <div style="text-align:center">
+      <span class="span_font">Áreas cadastradas</span>
+    </div>
   <button mat-mini-fab class="margem" color="primary" [routerLink]="[ '/area/insert']">
     <mat-icon svgIcon="iconADD"></mat-icon>
   </button>
@@ -52,6 +56,14 @@
     <td mat-cell *matCellDef="let element">
       <button mat-icon-button class="cor" [routerLink]="['/precipitation/insert',{id:element.id,description:element.description}]">
         <mat-icon svgIcon="iconPrecipitation"></mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="occorencia">
+    <th mat-header-cell *matHeaderCellDef> Ocorrências </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="warn" [routerLink]="['/occurrence/list',{id:element.id,description:element.description,geometria:element.geometry}]">
+        <mat-icon svgIcon="iconOccurrence"></mat-icon>
       </button>
     </td>
   </ng-container>

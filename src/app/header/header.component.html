@@ -3,20 +3,8 @@
   <button mat-button *ngIf="!isLogged()" [routerLink]="[ '/cadastro']">Cadastro</button>
   <button mat-button *ngIf="!isLogged()" [routerLink]="[ '/login']">Login</button>
   <button mat-button *ngIf="isLogged()" (click)="logout()">Logout</button>
-  <button mat-button [routerLink]="[ '/area/list']">Areas</button>
-  <button mat-button [routerLink]="[ '/occurrencetype/list']">Tipos de Ocorrencia</button>
+  <button mat-button [routerLink]="[ '/area/list']">Áreas</button>
+  <button mat-button [routerLink]="[ '/occurrencetype/list']">Tipos de Ocorrência</button>
   <button mat-button [routerLink]="[ '/precipitation/list']">Precipitações</button>
 
-  <button mat-button [matMenuTriggerFor]="beforeMenu">Teste2</button>
-  <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <button mat-menu-item [routerLink]="[ '']">Item 1</button>
-    <button mat-menu-item [routerLink]="[ '']">Item 2</button>
-  </mat-menu>
-
-
-  <button mat-button [matMenuTriggerFor]="afterMenu">Teste3</button>
-  <mat-menu #afterMenu="matMenu" xPosition="after">
-    <button mat-menu-item [routerLink]="[ '']">Item 1</button>
-    <button mat-menu-item [routerLink]="[ '']">Item 2</button>
-  </mat-menu>
 </mat-toolbar>

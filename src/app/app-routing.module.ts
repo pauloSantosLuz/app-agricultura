@@ -11,7 +11,10 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'precipitation',loadChildren: './precipitation/precipitation.module#PrecipitationModule', canActivate:[AuthGuard] },
   { path: 'occurrencetype', loadChildren: './occurrencetype/occurrencetype.module#OccurrencetypeModule', canActivate:[AuthGuard] },
-  {path: 'area', loadChildren: './area/area.module#AreaModule', canActivate:[AuthGuard] }
+  {path: 'area', loadChildren: './area/area.module#AreaModule', canActivate:[AuthGuard] },
+  {path: 'occurrence', loadChildren: './occurence/occurence.module#OccurenceModule', canActivate:[AuthGuard] },
+  {path: 'occurrencelocation', loadChildren: './occurencelocation/occurencelocation.module#OccurencelocationModule', canActivate:[AuthGuard] },
+  
 ];
 
 @NgModule({

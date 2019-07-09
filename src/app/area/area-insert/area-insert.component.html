@@ -1,5 +1,5 @@
 <mat-card>
-  <span>Cadastro de Area</span>
+  <span>Cadastro de Área</span>
 
   <mat-card-content>
     <form class="my-form" [formGroup]="ownerForm">
@@ -10,12 +10,6 @@
         <mat-error *ngIf="hasError('descricao', 'required')">Descrição necessária</mat-error>
       </mat-form-field>
 
-      <!--<mat-form-field class="full-width">
-        <mat-label>Coordenadas</mat-label>
-        <input matInput type="text" id="coordenada" placeholder="Coordenadas" disabled  > (input)="mapa($event.target.value)"-->
-      <!-- <mat-error *ngIf="hasError('coordenadas', 'required')">Coordenadas necessária</mat-error>
-        <mat-error *ngIf="hasError('coordenadas', 'pontoDif')">Ponto inicial deve ser igual ao ponto final</mat-error>
-      </mat-form-field>-->
 
       <mat-form-field>
         <mat-label>Tipo do solo</mat-label>

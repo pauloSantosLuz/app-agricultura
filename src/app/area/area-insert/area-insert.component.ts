@@ -9,7 +9,7 @@ import View from 'ol/View.js';
 import WKT from 'ol/format/WKT.js';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer.js';
 import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style.js';
-import { OSM, Vector as VectorSource } from 'ol/source.js';
+import { Vector as VectorSource } from 'ol/source.js';
 
 import BingMaps from 'ol/source/BingMaps.js';
 import { ZoomSlider } from 'ol/control.js';

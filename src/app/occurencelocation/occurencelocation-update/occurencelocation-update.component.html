@@ -1,0 +1,29 @@
+<mat-card>
+  <span>Atualizar Localização</span>
+
+  <mat-card-content>
+    <form class="my-form" [formGroup]="ownerForm">
+
+      <mat-form-field class="full-width">
+          <mat-label>Observação</mat-label>
+          <input matInput type="text" placeholder="Observação" formControlName="observacao">
+          <mat-error *ngIf="hasError('observacao', 'required')">Observação necessária</mat-error>
+        </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Coordenadas</mat-label>
+        <input matInput type="text" id="coordenada" disabled>
+      </mat-form-field>
+
+    </form>
+    
+    <div id="mousePos" class="my-map"></div>
+    <div id="map" class="map my-map"></div>
+  </mat-card-content>
+
+
+  <mat-card-actions>
+    <button mat-raised-button (click)="volta()" color="accent">Voltar</button>
+    <button mat-raised-button (click)="att()" color="primary" [disabled]="!ownerForm.valid">Atualizar</button>
+    <button mat-raised-button (click)="limpaMapa()" color="primary" style="float: right;">Limpa mapa</button>
+  </mat-card-actions>
+</mat-card>

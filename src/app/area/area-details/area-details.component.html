@@ -1,17 +1,25 @@
 <mat-card class="my-card">
+    <span>Área: {{desc}}</span>
   <mat-card-content>
-    <span class="span_font"> AREA: {{desc}} </span>
 
-    <mat-card-actions style="float: right;">
-      <button mat-raised-button [routerLink]="[ '/area/list']" color="accent">Voltar</button>
-    </mat-card-actions>
-    <br>
-    <span class="span_font"> Tipo do solo: {{solo.description}} </span>
-  </mat-card-content>
-</mat-card>
-<mat-card class="my-card2">
-  <mat-card-content>
-      <div id="mousePos" class="my-map"></div>
+    <form class="my-form">
+      <mat-form-field class="full-width">
+        <mat-label>Descrição</mat-label>
+        <input matInput type="text" id="area" disabled>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Tipo do solo</mat-label>
+        <input matInput type="text" id="solo" disabled>
+      </mat-form-field>
+    </form>
+
+    <div id="mousePos" class="my-map"></div>
     <div id="map" class="map my-map"></div>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button [routerLink]="[ '/area/list']" color="accent">Voltar</button>
+  </mat-card-actions>
+
 </mat-card>
