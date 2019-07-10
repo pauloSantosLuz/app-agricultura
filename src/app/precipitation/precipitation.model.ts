@@ -7,6 +7,6 @@ export class Precipitation{
     volume:number;
     startDate:string;
     endDate:string;
-    area:Area;
+    area:number;
 
 }
