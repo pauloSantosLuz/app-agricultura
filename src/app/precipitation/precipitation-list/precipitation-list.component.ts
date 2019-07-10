@@ -43,10 +43,10 @@ export class PrecipitationListComponent implements OnInit {
   }
 //
 
-  /*onDelete(id:string,description:string){//deleta uma occorencia apos confirmação
+  onDelete(id:string,description:string){//deleta uma occorencia apos confirmação
     this.occurrencetypeService.openConfimDialog(description).afterClosed().subscribe(res =>{
       if(res){
-        this.occurrencetypeService.deleteOccurrencetype(id).subscribe(
+        this.occurrencetypeService.deletePrecipitation(id).subscribe(
           (data) => {
             // recarega pagina
             this.ngOnInit();
@@ -57,7 +57,7 @@ export class PrecipitationListComponent implements OnInit {
         );
       }
     });
-  }*/
+  }
 
   
 

@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { PrecipitationListComponent } from './precipitation-list/precipitation-list.component';
 import { PrecipitationUpdateComponent } from './precipitation-update/precipitation-update.component';
+import { PrecipitationDeleteComponent } from './precipitation-delete/precipitation-delete.component';
+import { PrecipitationService } from './precipitation.service';
 const routes: Routes =[
   {path:'list',component: PrecipitationListComponent},
   {path:'insert',component: PrecipitationInsertComponent},
   {path:'update',component: PrecipitationUpdateComponent}
 ]
 @NgModule({
-  declarations: [PrecipitationInsertComponent, PrecipitationListComponent, PrecipitationUpdateComponent],
+  declarations: [PrecipitationInsertComponent, PrecipitationListComponent, PrecipitationUpdateComponent, PrecipitationDeleteComponent],
   imports: [
     MatDatepickerModule,
     CommonModule,
@@ -32,6 +34,8 @@ const routes: Routes =[
     ReactiveFormsModule,
     HttpClientModule,
     MatSelectModule,
-    RouterModule.forChild(routes)  ]
+    RouterModule.forChild(routes)  ],
+    entryComponents:[PrecipitationDeleteComponent],
+    providers:[PrecipitationService]
 })
 export class PrecipitationModule { }

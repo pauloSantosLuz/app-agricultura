@@ -6,6 +6,7 @@ import { throwError, Observable } from 'rxjs';
 import { Precipitation } from './precipitation.model';
 import { getDefaultURL } from '../app.const';
 import { catchError } from 'rxjs/operators';
+import { PrecipitationDeleteComponent } from './precipitation-delete/precipitation-delete.component';
 
 @Injectable({
   providedIn: 'root'
@@ -104,5 +105,18 @@ export class PrecipitationService {
     }
     return throwError('Something bad happened; please try again later.');
   }
+
+//abre o dialog para deletar uma ocorrencia
+openConfimDialog(name: string) {
+  return this.dialog.open(PrecipitationDeleteComponent, {
+    width: '390px',
+    panelClass: 'confim-dialog-container',
+    disableClose: true,
+    position: { top: "100px" },
+    data: {
+      message: name
+    }
+  });
+}
 
 }
