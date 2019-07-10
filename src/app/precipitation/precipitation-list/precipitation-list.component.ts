@@ -15,12 +15,12 @@ export class PrecipitationListComponent implements OnInit {
 
   message;
   displayedColumns: string[] = ['id','description','collectionType','volume','startDate','endDate', 'update', 'delete'];
-  public occurrencestype: Precipitation[];
+  public precipitation: Precipitation[];
   public dataSource = new MatTableDataSource<Precipitation>();
 
 //
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
-    private occurrencetypeService: PrecipitationService,
+    private precipitationService: PrecipitationService,
     private router: Router,
     public dialog: MatDialog, private activateRoute: ActivatedRoute, private location: Location
   ) {
@@ -33,7 +33,7 @@ export class PrecipitationListComponent implements OnInit {
   ngOnInit() {
     this.id = this.activateRoute.snapshot.params['id'];
     this.areaDesc = this.activateRoute.snapshot.params['description'];
-    this.occurrencetypeService.getPrecipitation(this.id).subscribe(
+    this.precipitationService.getPrecipitation(this.id).subscribe(
       (data: Precipitation[]) => {
         this.dataSource.data = data; 
       },
@@ -47,9 +47,9 @@ volta(){
   this.location.back();
 }
   onDelete(id:string,description:string){//deleta uma occorencia apos confirmação
-    this.occurrencetypeService.openConfimDialog(description).afterClosed().subscribe(res =>{
+    this.precipitationService.openConfimDialog(description).afterClosed().subscribe(res =>{
       if(res){
-        this.occurrencetypeService.deletePrecipitation(id).subscribe(
+        this.precipitationService.deletePrecipitation(id).subscribe(
           (data) => {
             // recarega pagina
             this.ngOnInit();

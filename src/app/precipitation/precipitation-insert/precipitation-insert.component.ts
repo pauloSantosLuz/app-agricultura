@@ -16,7 +16,7 @@ export class PrecipitationInsertComponent implements OnInit {
   id;
   message;
   constructor(private activateRoute:ActivatedRoute,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private formBuilder: FormBuilder, private router: Router,
-    private occurrencetypeService: PrecipitationService, private location: Location) {
+    private precipitationService: PrecipitationService, private location: Location) {
     iconRegistry.addSvgIcon('iconClose', sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-close-24px.svg'));
   }
 
@@ -41,7 +41,7 @@ export class PrecipitationInsertComponent implements OnInit {
     this.location.back();
   }
   add() {   
-    this.occurrencetypeService.postPrecipitation(this.f.observation.value,
+    this.precipitationService.postPrecipitation(this.f.observation.value,
       this.f.collectionType.value,this.f.volume.value,moment(this.f.startDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),
       moment(this.f.endDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),this.id).subscribe(() => {
       // redireciona a view

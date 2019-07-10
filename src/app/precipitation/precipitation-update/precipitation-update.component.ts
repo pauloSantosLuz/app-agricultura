@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OccurrencetypeService } from 'src/app/occurrencetype/occurrencetype.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrecipitationService } from '../precipitation.service';
 import * as moment from 'moment';
@@ -18,7 +17,7 @@ export class PrecipitationUpdateComponent implements OnInit {
   ownerForm: FormGroup;
   message;
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private formBuilder: FormBuilder,private router: Router,
-    private occurrencetypeService: PrecipitationService, private activateRoute:ActivatedRoute, private location: Location) { 
+    private precipitationService: PrecipitationService, private activateRoute:ActivatedRoute, private location: Location) { 
     iconRegistry.addSvgIcon('iconClose',sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-close-24px.svg'));
   }
 id;
@@ -61,7 +60,7 @@ ngOnInit() {
     this.location.back();
   }
   att(){
-    this.occurrencetypeService.putPrecipitation(this.id,this.f.observation.value,
+    this.precipitationService.putPrecipitation(this.id,this.f.observation.value,
       this.f.collectionType.value,this.f.volume.value,moment(this.f.startDate.value).format("YYYY-MM-DDT00:mm:ssZZ"),
       moment(this.f.endDate.value).format("YYYY-MM-DDT00:mm:ssZZ"),this.area).subscribe(() => {
         alert("Precipitação atualizada.");
