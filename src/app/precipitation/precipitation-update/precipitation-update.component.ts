@@ -48,8 +48,8 @@ ngOnInit() {
     this.f.observation.setValue(this.description);
     this.f.collectionType.setValue(this.collectionType);
     this.f.volume.setValue(this.volume);
-    this.f.startDate.setValue(moment(this.startDate).format("YYYY-MM-DD"));
-    this.f.endDate.setValue(moment(this.startDate).format("YYYY-MM-DD"));
+    this.f.startDate.setValue(moment(this.startDate).format("YYYY-MM-DDT01:mm:ss"));
+    this.f.endDate.setValue(moment(this.endDate).format("YYYY-MM-DDT01:mm:ss"));
   }
   public hasError = (controlName: string, errorName: string) =>{
     return this.ownerForm.controls[controlName].hasError(errorName);
@@ -62,8 +62,8 @@ ngOnInit() {
   }
   att(){
     this.occurrencetypeService.putPrecipitation(this.id,this.f.observation.value,
-      this.f.collectionType.value,this.f.volume.value,moment(this.f.startDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),
-      moment(this.f.endDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),this.area).subscribe(() => {
+      this.f.collectionType.value,this.f.volume.value,moment(this.f.startDate.value).format("YYYY-MM-DDT00:mm:ssZZ"),
+      moment(this.f.endDate.value).format("YYYY-MM-DDT00:mm:ssZZ"),this.area).subscribe(() => {
         alert("Precipitação atualizada.");
       this.volta();
     },

@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PrecipitationService } from '../precipitation.service';
 import { Precipitation } from '../precipitation.model';
 import { Location } from '@angular/common';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-precipitation-list',
   templateUrl: './precipitation-list.component.html',
@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 export class PrecipitationListComponent implements OnInit {
 
   message;
-  displayedColumns: string[] = ['id','description','collectionType','volume','startDate','endDate','area', 'update', 'delete'];
+  displayedColumns: string[] = ['id','description','collectionType','volume','startDate','endDate', 'update', 'delete'];
   public occurrencestype: Precipitation[];
   public dataSource = new MatTableDataSource<Precipitation>();
 
@@ -61,7 +61,9 @@ volta(){
       }
     });
   }
-
+convertData(data){
+  return moment(data).format("YYYY-MM-DD")
+}
   
 
   //ordenação
