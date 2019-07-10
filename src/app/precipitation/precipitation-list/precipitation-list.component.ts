@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatIconRegistry, MatDialog, MatSort, MatPaginator } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PrecipitationService } from '../precipitation.service';
 import { Precipitation } from '../precipitation.model';
-import { Occurrencetype } from 'src/app/occurrencetype/occurrencetype.model';
-import { OccurrencetypeService } from 'src/app/occurrencetype/occurrencetype.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-precipitation-list',
@@ -23,16 +22,18 @@ export class PrecipitationListComponent implements OnInit {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
     private occurrencetypeService: PrecipitationService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog, private activateRoute: ActivatedRoute, private location: Location
   ) {
     iconRegistry.addSvgIcon('iconDel', sanitizer.bypassSecurityTrustResourceUrl('assets/rubbish-bin-delete-button.svg'));
     iconRegistry.addSvgIcon('iconADD', sanitizer.bypassSecurityTrustResourceUrl('assets/add.svg'));
     iconRegistry.addSvgIcon('iconUp', sanitizer.bypassSecurityTrustResourceUrl('assets/sharp-system_update-24px.svg'));
   }
-//
+  id;
+  areaDesc;
   ngOnInit() {
-
-    this.occurrencetypeService.getPrecipitation().subscribe(
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.areaDesc = this.activateRoute.snapshot.params['description'];
+    this.occurrencetypeService.getPrecipitation(this.id).subscribe(
       (data: Precipitation[]) => {
         this.dataSource.data = data; 
       },
@@ -42,7 +43,9 @@ export class PrecipitationListComponent implements OnInit {
     );
   }
 //
-
+volta(){
+  this.location.back();
+}
   onDelete(id:string,description:string){//deleta uma occorencia apos confirmação
     this.occurrencetypeService.openConfimDialog(description).afterClosed().subscribe(res =>{
       if(res){

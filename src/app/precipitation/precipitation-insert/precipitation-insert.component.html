@@ -43,7 +43,6 @@
         <mat-error *ngIf="hasError('startDate', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
       </mat-form-field>
 
-
       <mat-form-field class="full-width">
         <input matInput [matDatepicker]="dataFinal" placeholder="Data final" formControlName="endDate">
         <mat-datepicker-toggle matSuffix [for]="dataFinal"></mat-datepicker-toggle>
@@ -52,12 +51,11 @@
         <mat-error *ngIf="hasError('endDate', 'required')">Preenchimento necessário</mat-error>
         <mat-error *ngIf="hasError('endDate', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
       </mat-form-field>
-
       
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button [routerLink]="[ '/occurrencetype/list']" color="accent">Voltar</button>
-    <button mat-raised-button (click)="add()" color="primary" [disabled]="!ownerForm.valid">Adicionar</button>
+    <button mat-raised-button (click)="volta()" color="accent">Voltar</button>
+    <button mat-raised-button (click)="add()" color="primary" [disabled]="!ownerForm.valid">Cadastrar</button>
   </mat-card-actions>
 </mat-card>

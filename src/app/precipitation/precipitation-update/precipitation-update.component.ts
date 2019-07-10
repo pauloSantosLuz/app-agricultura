@@ -6,6 +6,7 @@ import { OccurrencetypeService } from 'src/app/occurrencetype/occurrencetype.ser
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrecipitationService } from '../precipitation.service';
 import * as moment from 'moment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-precipitation-update',
@@ -17,7 +18,7 @@ export class PrecipitationUpdateComponent implements OnInit {
   ownerForm: FormGroup;
   message;
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private formBuilder: FormBuilder,private router: Router,
-    private occurrencetypeService: PrecipitationService, private activateRoute:ActivatedRoute) { 
+    private occurrencetypeService: PrecipitationService, private activateRoute:ActivatedRoute, private location: Location) { 
     iconRegistry.addSvgIcon('iconClose',sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-close-24px.svg'));
   }
 id;
@@ -47,8 +48,8 @@ ngOnInit() {
     this.f.observation.setValue(this.description);
     this.f.collectionType.setValue(this.collectionType);
     this.f.volume.setValue(this.volume);
-    this.f.startDate.setValue(moment(this.startDate).format("YYYY-MM-DDTHH:mm:ssZZ"));
-    this.f.endDate.setValue(moment(this.startDate).format("YYYY-MM-DDTHH:mm:ssZZ"));
+    this.f.startDate.setValue(moment(this.startDate).format("YYYY-MM-DD"));
+    this.f.endDate.setValue(moment(this.startDate).format("YYYY-MM-DD"));
   }
   public hasError = (controlName: string, errorName: string) =>{
     return this.ownerForm.controls[controlName].hasError(errorName);
@@ -56,11 +57,15 @@ ngOnInit() {
   get f() {
     return this.ownerForm.controls;
   }
+  volta(){
+    this.location.back();
+  }
   att(){
     this.occurrencetypeService.putPrecipitation(this.id,this.f.observation.value,
       this.f.collectionType.value,this.f.volume.value,moment(this.f.startDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),
       moment(this.f.endDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),this.area).subscribe(() => {
-      this.router.navigate(['/occurrencetype/list']);
+        alert("Precipitação atualizada.");
+      this.volta();
     },
     (error) => {
       this.message = error;

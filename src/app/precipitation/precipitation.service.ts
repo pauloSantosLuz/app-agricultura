@@ -21,10 +21,10 @@ export class PrecipitationService {
     });
   }
 
-  public getPrecipitation = (): Observable<Precipitation[]> => {
+  public getPrecipitation = (id:number): Observable<Precipitation[]> => {
     return this.http
       .get<Precipitation[]>(
-        getDefaultURL('precipitation'),
+        getDefaultURL('precipitation/area/'+id),
         { headers: this.getHeaders() }
       )
       .pipe(catchError(this.handleError));
