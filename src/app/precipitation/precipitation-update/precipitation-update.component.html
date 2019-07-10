@@ -1,0 +1,63 @@
+<mat-card>
+  <span>Alteração de dado de chuva</span>
+  <mat-card-content>
+    <form class="my-form" [formGroup]="ownerForm">
+      <mat-form-field class="full-width">
+        <mat-label>Observação:</mat-label>
+
+        <input matInput type="text" placeholder="Descrição" formControlName="observation">
+        <mat-hint align="end">Insira uma observação sobre a chuva</mat-hint>
+        <mat-error *ngIf="hasError('observation', 'required')">Preenchimento necessário</mat-error>
+        <mat-error *ngIf="hasError('observation', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
+      </mat-form-field>
+
+      
+
+      <mat-form-field>
+        <mat-label>Estação:</mat-label>
+        <mat-select formControlName="collectionType" placeholder="collectionType">
+          <mat-option value="verao">Verão</mat-option>
+          <mat-option value="inverno">Inverno</mat-option>
+          <mat-option value="outono">Outono</mat-option>
+          <mat-option value="primavera">Primavera</mat-option>
+        </mat-select>
+        <mat-hint align="end">Selecione uma estação</mat-hint>
+        <mat-error *ngIf="hasError('observation', 'required')">Preenchimento necessário</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Volume:</mat-label>
+
+        <input matInput type="text" placeholder="Descrição" formControlName="volume">
+        <mat-hint align="end">Insira o volume da chuva</mat-hint>
+        <mat-error *ngIf="hasError('volume', 'required')">Preenchimento necessário</mat-error>
+        <mat-error *ngIf="hasError('volume', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput [matDatepicker]="dataInicio" placeholder="Data inicial" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
+        <mat-datepicker #dataInicio></mat-datepicker>
+        <mat-hint align="end">Insira a data do inicio da chuva</mat-hint>
+        <mat-error *ngIf="hasError('startDate', 'required')">Preenchimento necessário</mat-error>
+        <mat-error *ngIf="hasError('startDate', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width">
+        <input matInput [matDatepicker]="dataFinal" placeholder="Data final" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="dataFinal"></mat-datepicker-toggle>
+        <mat-datepicker #dataFinal></mat-datepicker>
+        <mat-hint align="end">Insira a data do fim da chuva</mat-hint>
+        <mat-error *ngIf="hasError('endDate', 'required')">Preenchimento necessário</mat-error>
+        <mat-error *ngIf="hasError('endDate', 'maxlength')">Você tem mais de 60 caracteres</mat-error>
+      </mat-form-field>
+
+      
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button [routerLink]="[ '/precipitation/list']" color="accent">Voltar</button>
+    <button mat-raised-button (click)="att()" color="primary" [disabled]="!ownerForm.valid">alterar</button>
+  </mat-card-actions>
+</mat-card>

@@ -30,20 +30,22 @@ export class PrecipitationService {
   }
 
   public putPrecipitation(
+    id:string,
     observation: string,
     collectionType: string,
     volume: string,
     startDate: string,
     endDate: string,
-    id: string
+    area: string
     ) {
     const body = JSON.stringify({
-       observation: observation,
-       collectionType: collectionType,
-       volume: volume,
-       startDate: startDate,
-       endDate: endDate,
-       area: {id:id}
+      id:id,
+      description: observation,
+      collectionType: collectionType,
+      volume: volume,
+      startDate: startDate,
+      endDate: endDate,
+      area: {id:area}
    });
     return this.http
       .put(

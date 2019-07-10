@@ -6,12 +6,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { PrecipitationListComponent } from './precipitation-list/precipitation-list.component';
+import { PrecipitationUpdateComponent } from './precipitation-update/precipitation-update.component';
 const routes: Routes =[
   {path:'list',component: PrecipitationListComponent},
-  {path:'insert',component: PrecipitationInsertComponent}
+  {path:'insert',component: PrecipitationInsertComponent},
+  {path:'update',component: PrecipitationUpdateComponent}
 ]
 @NgModule({
-  declarations: [PrecipitationInsertComponent, PrecipitationListComponent],
+  declarations: [PrecipitationInsertComponent, PrecipitationListComponent, PrecipitationUpdateComponent],
   imports: [
     MatDatepickerModule,
     CommonModule,

@@ -37,7 +37,7 @@ export class PrecipitationInsertComponent implements OnInit {
     return this.ownerForm.controls;
   }
   add() {
-    
+    console.log(this.f.startDate.value);    
     this.occurrencetypeService.postPrecipitation(this.f.observation.value,
       this.f.collectionType.value,this.f.volume.value,moment(this.f.startDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),
       moment(this.f.endDate.value).format("YYYY-MM-DDTHH:mm:ssZZ"),this.id).subscribe(() => {
