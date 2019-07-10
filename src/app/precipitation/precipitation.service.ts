@@ -55,7 +55,7 @@ export class PrecipitationService {
   }
 
   public postPrecipitation(
-    observation: string,
+    description: string,
     collectionType: string,
     volume: string,
     startDate: string,
@@ -64,7 +64,7 @@ export class PrecipitationService {
 
   ) {
     const body = JSON.stringify({
-      observation: observation,
+      description: description,
       collectionType: collectionType,
       volume: volume,
       startDate: startDate,

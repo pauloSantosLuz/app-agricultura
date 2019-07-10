@@ -15,7 +15,7 @@ import { OccurrencetypeService } from 'src/app/occurrencetype/occurrencetype.ser
 export class PrecipitationListComponent implements OnInit {
 
   message;
-  displayedColumns: string[] = ['id','observation','collectionType','volume','startDate','endDate','area', 'update', 'delete'];
+  displayedColumns: string[] = ['id','description','collectionType','volume','startDate','endDate','area', 'update', 'delete'];
   public occurrencestype: Precipitation[];
   public dataSource = new MatTableDataSource<Precipitation>();
 
