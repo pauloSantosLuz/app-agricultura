@@ -13,18 +13,61 @@ import { OccurrencetypeService } from 'src/app/occurrencetype/occurrencetype.ser
   styleUrls: ['./precipitation-list.component.css']
 })
 export class PrecipitationListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'description', 'update', 'delete'];
-  public dataSource = new MatTableDataSource<Occurrencetype>();
 
+  message;
+  displayedColumns: string[] = ['id','observation','collectionType','volume','startDate','endDate','area', 'update', 'delete'];
+  public occurrencestype: Precipitation[];
+  public dataSource = new MatTableDataSource<Precipitation>();
+
+//
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
+    private occurrencetypeService: PrecipitationService,
     private router: Router,
     public dialog: MatDialog
   ) {
     iconRegistry.addSvgIcon('iconDel', sanitizer.bypassSecurityTrustResourceUrl('assets/rubbish-bin-delete-button.svg'));
+    iconRegistry.addSvgIcon('iconADD', sanitizer.bypassSecurityTrustResourceUrl('assets/add.svg'));
     iconRegistry.addSvgIcon('iconUp', sanitizer.bypassSecurityTrustResourceUrl('assets/sharp-system_update-24px.svg'));
   }
+//
+  ngOnInit() {
 
-  ngOnInit(){}
+    this.occurrencetypeService.getPrecipitation().subscribe(
+      (data: Precipitation[]) => {
+        this.dataSource.data = data; 
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+//
+
+  /*onDelete(id:string,description:string){//deleta uma occorencia apos confirmação
+    this.occurrencetypeService.openConfimDialog(description).afterClosed().subscribe(res =>{
+      if(res){
+        this.occurrencetypeService.deleteOccurrencetype(id).subscribe(
+          (data) => {
+            // recarega pagina
+            this.ngOnInit();
+          },
+          (error) => {
+            this.message = error;
+          }
+        );
+      }
+    });
+  }*/
+
+  
+
+  //ordenação
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;//cria paginas na tabela
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;//cria paginas na tabela
+  }
 
   //pesquisa item na tabela
   public doFilter = (value: string) => {

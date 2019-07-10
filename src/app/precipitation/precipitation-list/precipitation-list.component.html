@@ -6,3 +6,66 @@
       <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtro">
     </mat-form-field>
   </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortStart="asc">
+
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="observation">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Observação </th>
+      <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="collectionType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estação </th>
+      <td mat-cell *matCellDef="let element"> {{element.collectionType}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="volume">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Volume </th>
+      <td mat-cell *matCellDef="let element"> {{element.volume}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Data inicio </th>
+      <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Data termino </th>
+      <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="area">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Area </th>
+      <td mat-cell *matCellDef="let element"> {{element.area.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef> Update </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="accent"
+          [routerLink]="[ '/occurrencetype/update',{id:element.id,description:element.description}]">
+          <mat-icon class="mat-18" svgIcon="iconUp"></mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" (click)="onDelete(element.id,element.description)">
+          <mat-icon svgIcon="iconDel"></mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
+  
