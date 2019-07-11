@@ -1,5 +1,33 @@
-# AppAgricultura
+# Trabalho: Aplicação Angular
 
+Desenvolver uma aplicação utilizando o framework Angular.
+
+A aplicação deve consumir uma API que disponibiliza recursos para a agricultura.
+
+Consumir pelo menos 3 recursos da API além do login.
+
+A aplicação Angular deve utilizar os seguintes conceitos:
+
+  Login;
+  
+  Router;
+  
+  Diretivas ngFor e ngIf;
+  
+  Reactive Forms;
+  
+  Requisições HTTP;
+  
+  Modularizar a aplicação.
+ 
+
+Layout:
+
+  Aplicar os componentes do tema Material, disponibilizados para o Angular;
+  
+  Utilizar um componente para atuar com informação espacial (Google Maps, OpenLayers, ...).
+
+# AppAgricultura
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
 ## Development server
