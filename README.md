@@ -6,6 +6,14 @@ A aplicação deve consumir uma API que disponibiliza recursos para a agricultur
 
 Consumir pelo menos 3 recursos da API além do login.
 
+A API trabalha com alguns atributos que contém informação espacial. O formato representacional para os dados espaciais são em Well-known Text (WKT). 
+
+Por exemplo, a geometria de uma Área é um tipo espacial MULTIPOLYGON, que pode ser representado em WKT como 
+
+"SRID=4326;MULTIPOLYGON(((-45.98 -19.56,-46.05 -19.25,-43.52 -20.37,-43.05 -20.67,-45.98 -19.56)))".
+
+O SRID refere-se ao sistema de referência de coordenadas que os pontos estão sendo referenciados. Por exemplo, 4326 refere-se ao sistema de coordenadas geográficas WGS84, que é um sistema utilizado globalmente. 
+
 A aplicação Angular deve utilizar os seguintes conceitos:
 
   Login;
