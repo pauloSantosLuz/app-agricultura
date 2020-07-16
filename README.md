@@ -24,6 +24,6 @@ Executando a aplicação
 Com o prompt command aberto na pasta do projeto e o ambiente virtual já ativado você pode iniciar o servidor com o comando:
 
 
-    (venv) $ ng serve
+    $ ng serve
 
 e digitar http://localhost:4200/ em seu navegador.
