@@ -1,4 +1,4 @@
-AppAgricultura
+app-agricultura
 ===========
 
   Construção de um front-end em Angular para disciplina de tópicos avançados.
